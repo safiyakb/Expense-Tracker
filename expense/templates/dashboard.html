@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+{% block body %}
+        <div class="container">
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-8">
+                    <div class="heading mt-4">
+                        <h2 style="text-align: center; font-weight: bold;">YOUR WALLET</h2>
+                    </div><br>
+                    <div class="sub-head mt-4 mb-2">
+                        <h4 style="display: inline;">Wallet Details</h4>
+                        <a href="/wallet/"><button class="btn btn-light" style="float: right;">Create Wallet</button></a>
+                    </div><br>
+                    <table class="table table-striped">
+                        <tr>
+                            <th>Wallet Name</th>
+                            <th>Balance Amount</th>
+                            <th>Last Transaction</th>
+                        </tr>
+                        {% for wallet in all_wallets %}
+                            <tr>
+                                <td>{{ wallet.name }}</td>
+                                <td>{{ wallet.balance }}</td>
+                                <td>{{ wallet.last_transaction }}</td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                    <br><br>
+                    <hr>
+                    <br>
+                    <div class="heading">
+                        <h2 style="text-align: center;">Transactions</h2>
+                    </div><br>
+                </div>
+                <div class="col-md-2"></div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="sub-head mt-4 mb-2">
+                            <h4 style="display: inline;">All Expenses</h4>
+                            <a href="/expense/"><button class="btn btn-light" style="float: right;">Add Expense</button></a>
+                        </div><br>
+                        <table class="table table-striped">
+                            <tr>
+                                <th>Expense Title</th>
+                                <th>Description</th>
+                                <th>Amount</th>
+                                <th>Timestamp</th>
+                                <th>Wallet</th>
+                            </tr>
+                            {% for expense in all_expenses %}
+                                <tr>
+                                    <td>{{ expense.title }}</td>
+                                    <td>{{ expense.description }}</td>
+                                    <td>{{ expense.amount }}</td>
+                                    <td>{{ expense.timestamp }}</td>
+                                    <td>{{ expense.wallet }}</td>
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="sub-head mt-4 mb-2">
+                            <h4 style="display: inline;">All Incomes</h4>
+                            <a href="/income/"><button class="btn btn-light" style="float: right;">Add Income</button></a>
+                        </div><br>
+                        <table class="table table-striped">
+                            <tr>
+                                <th>Income Title</th>
+                                <th>Description</th>
+                                <th>Amount</th>
+                                <th>Timestamp</th>
+                                <th>Wallet</th>
+                            </tr>
+                            {% for income in all_incomes %}
+                                <tr>
+                                    <td>{{ income.title }}</td>
+                                    <td>{{ income.description }}</td>
+                                    <td>{{ income.amount }}</td>
+                                    <td>{{ income.timestamp }}</td>
+                                    <td>{{ income.wallet }}</td>
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
